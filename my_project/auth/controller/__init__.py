@@ -1,0 +1,23 @@
+from my_project.auth.controller.people.bank_account_controller import BankAccountController
+from my_project.auth.controller.people.people_controller import PeopleController
+from my_project.auth.controller.people.people_photos_controller import PeoplePhotosController
+from my_project.auth.controller.people.reviews_controller import ReviewsController
+from my_project.auth.controller.property.address_controller import AddressController
+from my_project.auth.controller.property.property_controller import PropertyController
+from my_project.auth.controller.property.property_has_reservations_controller import PropertyHasReservationsController
+from my_project.auth.controller.property.property_stats_controller import PropertyStatsController
+from my_project.auth.controller.reservation.reservation_controller import ReservationController
+from my_project.auth.controller.reservation.reservation_history_controller import ReservationHistoryController
+from my_project.auth.controller.reservation.reservation_time_controller import ReservationTimeController
+
+bank_account_controller = BankAccountController()
+people_controller = PeopleController()
+people_photos_controller = PeoplePhotosController()
+reviews_controller = ReviewsController()
+address_controller = AddressController()
+property_controller = PropertyController()
+property_has_reservations_controller = PropertyHasReservationsController()
+property_stats_controller = PropertyStatsController()
+reservation_controller = ReservationController()
+reservation_history_controller = ReservationHistoryController()
+reservation_time_controller = ReservationTimeController()
