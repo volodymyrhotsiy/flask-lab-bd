@@ -52,3 +52,19 @@ def delete_all_people() -> Response:
     people_controller.delete_all()
     return make_response("All people deleted", HTTPStatus.OK)
 
+@people_bp.route("/photos/<int:people_id>", methods=["GET"])
+def get_people_photos(people_id):
+    return make_response(jsonify(people_controller.get_people_photos(people_id)), HTTPStatus.OK)
+
+@people_bp.route("/reviews/<int:people_id>", methods=["GET"])
+def get_people_reviews(people_id):
+    return make_response(jsonify(people_controller.get_reviews(people_id)), HTTPStatus.OK)
+
+@people_bp.route("/property/<int:people_id>", methods=["GET"])
+def get_people_property(people_id):
+    return make_response(jsonify(people_controller.get_property(people_id)), HTTPStatus.OK)
+
+@people_bp.route("/reservation/<int:people_id>", methods=["GET"])
+def get_people_reservation(people_id):
+    return make_response(jsonify(people_controller.get_reservation(people_id)), HTTPStatus.OK)
+

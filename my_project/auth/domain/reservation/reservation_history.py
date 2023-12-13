@@ -8,19 +8,20 @@ from sqlalchemy.orm import relationship
 from my_project.auth.domain.i_dto import IDto
 
 class ReservationHistory(IDto, db.Model):
+    __tablename__ = "reservation_history"
     id = Column(Integer, primary_key=True)
     reservation_id = Column(Integer, ForeignKey("reservation.id"), nullable=False)
-    peeople_id = Column(Integer, ForeignKey("people.id"), nullable=False)
+    people_id = Column(Integer, ForeignKey("people.id"), nullable=False)
 
     def __repr__(self):
-        return f"ReservationHistory(peeople_id={self.peeople_id})"
+        return f"ReservationHistory(peeople_id={self.people_id})"
 
     @staticmethod
     def create_from_dto(dto_dict: dict[str, Any]) -> ReservationHistory:
         obj = ReservationHistory(
             id = dto_dict.get("id"),
             reservation_id = dto_dict.get("reservation_id"),
-            peeople_id = dto_dict.get("peeople_id"),
+            peeople_id = dto_dict.get("people_id"),
         )
         return obj
     
@@ -28,5 +29,5 @@ class ReservationHistory(IDto, db.Model):
         return {
             "id": self.id,
             "reservation_id": self.reservation_id,
-            "peeople_id": self.peeople_id,
+            "people_id": self.people_id,
         }

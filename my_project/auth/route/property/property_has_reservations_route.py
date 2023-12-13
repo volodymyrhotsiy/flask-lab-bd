@@ -52,3 +52,11 @@ def delete_all_property_has_reservations() -> Response:
     property_has_reservations_controller.delete_all()
     return make_response("All PropertyHasReservations deleted", HTTPStatus.OK)
 
+@property_has_reservations_bp.route("/property/<int:property_id>", methods=["GET"])
+def get_properties_for_reservation(property_id: int) -> Response:
+    return make_response(jsonify(property_has_reservations_controller.get_reservations_for_property(property_id)), HTTPStatus.OK)
+
+@property_has_reservations_bp.route("/reservation/<int:reservation_id>", methods=["GET"])
+def get_reservations_for_property(reservation_id: int) -> Response:
+    return make_response(jsonify(property_has_reservations_controller.get_properties_for_reservation(reservation_id)), HTTPStatus.OK)
+

@@ -8,6 +8,7 @@ from sqlalchemy.orm import relationship
 from my_project.auth.domain.i_dto import IDto
 
 class PropertyStats(IDto, db.Model):
+    __tablename__ = "property_stats"
     id = Column(Integer, primary_key=True)
     number_of_bedrooms = Column(Integer, nullable=False)
     number_of_bathrooms = Column(Integer, nullable=False)

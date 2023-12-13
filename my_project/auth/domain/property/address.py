@@ -8,11 +8,14 @@ from sqlalchemy.orm import relationship
 from my_project.auth.domain.i_dto import IDto
 
 class Address(IDto, db.Model):
+    __tablename__ = "address"
+
     id = Column(Integer, primary_key=True)
     state = Column(String(30), nullable=False)
     street = Column(String(30), nullable=False)
     street_number = Column(String(30), nullable=False)
     property = relationship("Property", backref="property_address", lazy=True)
+    city_id = Column(Integer)
 
     def __repr__(self):
         return f"Adress(state='{self.state}', street='{self.street}', street_number='{self.street_number}')"
@@ -25,6 +28,7 @@ class Address(IDto, db.Model):
             state = dto_dict.get("state"),
             street = dto_dict.get("street"),
             street_number = dto_dict.get("street_number"),
+            city_id = dto_dict.get("city_id "),
         )
         return obj
     
@@ -34,4 +38,5 @@ class Address(IDto, db.Model):
             "state": self.state,
             "street": self.street,
             "street_number": self.street_number,
+            "city_id ": self.city_id, 
         }

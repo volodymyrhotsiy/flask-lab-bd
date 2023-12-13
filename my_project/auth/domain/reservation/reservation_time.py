@@ -8,6 +8,7 @@ from sqlalchemy.orm import relationship
 from my_project.auth.domain.i_dto import IDto
 
 class ReservationTime(IDto, db.Model):
+    __tablename__ = "reservation_time"
     id = Column(Integer, primary_key=True)
     check_in_date = Column(DateTime, nullable=False)
     check_out_date = Column(DateTime, nullable=False)

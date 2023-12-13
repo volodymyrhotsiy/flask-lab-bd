@@ -8,13 +8,16 @@ from sqlalchemy.orm import relationship
 from my_project.auth.domain.i_dto import IDto
 
 class Property(IDto, db.Model):
+    __tablename__ = "property"
     id = Column(db.Integer, primary_key=True)
     people_id = Column(db.Integer, ForeignKey("people.id"), nullable=False)
     property_stats_id = Column(db.Integer, ForeignKey("property_stats.id"), nullable=False)
     address_id = Column(db.Integer, ForeignKey("address.id"), nullable=False)
 
+    property_has_reservations = relationship("PropertyHasReservations", backref="property", lazy=True)
+    
     def __repr__(self):
-        return f"Property(people_id={self.people_id}, property_stats={self.property_stats}, property_adress={self.property_adress})"
+        return f"Property(people_id={self.people_id}, property_stats={self.property_stats}, property_adress={self.property_adress}, city_id={self.city_id})"
 
     
     @staticmethod

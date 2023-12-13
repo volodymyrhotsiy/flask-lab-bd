@@ -7,6 +7,7 @@ from my_project import db
 from my_project.auth.domain.i_dto import IDto
 
 class PropertyHasReservations(IDto, db.Model):
+    __tablename__ = "property_has_reservations"
     id = Column(Integer, primary_key=True)
     property_id = Column(Integer, ForeignKey("property.id"), nullable=False)
     reservation_id = Column(Integer, ForeignKey("reservation.id"), nullable=False)

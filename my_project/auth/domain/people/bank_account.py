@@ -9,7 +9,7 @@ from my_project import db
 from my_project.auth.domain.i_dto import IDto
 
 class BankAccount(IDto, db.Model):
-    __talbename__ = "bankaccount"
+    __talbename__ = "bank_account"
     id = Column(Integer, primary_key=True)
     account_name = Column(String(45), nullable=False)
     people_id = Column(Integer, ForeignKey("people.id"), nullable=False)
@@ -23,7 +23,6 @@ class BankAccount(IDto, db.Model):
             id = dto_dict.get("id"),
             account_name = dto_dict.get("account_name"),
             people_id = dto_dict.get("people_id"),
-            service = dto_dict.get("service"),
         )
         return obj
     
@@ -32,5 +31,4 @@ class BankAccount(IDto, db.Model):
             "id": self.id,
             "account_name": self.account_name,
             "people_id": self.people_id,
-            "service": self.service,
         }

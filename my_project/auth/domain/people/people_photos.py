@@ -7,7 +7,7 @@ from my_project import db
 from my_project.auth.domain.i_dto import IDto
 
 class PeoplePhotos(IDto, db.Model):
-    __tablename__ = "peoplephotos"
+    __tablename__ = "people_photos"
     
     id = Column(Integer, primary_key=True)
     photo_url = Column(String(45))
@@ -29,5 +29,5 @@ class PeoplePhotos(IDto, db.Model):
         return {
             "id": self.id,
             "photo_url": self.photo_url,
-            "people_id": self.person_id,
+            "people_id": self.people_id,
         }
